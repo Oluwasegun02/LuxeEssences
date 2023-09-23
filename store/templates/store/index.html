@@ -1,0 +1,16 @@
+{% extends 'store/layouts/main.html' %}
+
+{% block content %}
+
+{% comment %} slider {% endcomment %}
+  {% include "store/inc/slider.html" %}
+  {% comment %} show all product {% endcomment %}
+  {% include "store/products/allpro.html" %}
+  {% comment %} about the Author {% endcomment %}
+  {% include "store/inc/about.html" %}
+  {% comment %} subscript to our new letter {% endcomment %}
+  {% include "store/inc/news.html" %}
+  {% comment %} footer {% endcomment %}
+  {% include "store/inc/footer.html" %}
+
+{% endblock content %}

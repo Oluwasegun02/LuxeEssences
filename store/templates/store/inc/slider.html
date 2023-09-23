@@ -1,0 +1,52 @@
+{% load static %}
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="text-center carousel-item active">
+      <img src="{% static 'images/OIP.jpeg' %}" class="d-block w-100" alt="...">
+      <!-- Text overlay for the first slide -->
+      <div class="carousel-caption">
+        <h2 class="text-capitalize text-white">best collection</h2>
+        <h1 class="text-uppercase py-2 fw-bold text-white">new arrivals</h1>
+        <a href="#" class="btn mt-3 text-uppercase">shop now</a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/mareefe.jpg' %}" class="d-block w-100" alt="...">
+      <!-- Text overlay for the second slide -->
+      <div class="carousel-caption">
+        <h2 class="text-capitalize text-white">best price & offer</h2>
+        <h1 class="text-uppercase py-2 fw-bold text-white">new season</h1>
+        <a href="#" class="btn mt-3 text-uppercase">buy now</a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/banner.jpg' %}" class="d-block w-100" alt="...">
+      <!-- Text overlay for the third slide -->
+      <div class="carousel-caption">
+        <h2 class="text-capitalize text-white">Summer  collection</h2>
+        <h1 class="text-uppercase py-2 fw-bold text-white">Limited Edition</h1>
+        <a href="#" class="btn mt-3 text-uppercase">Explore</a>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+<style>
+  img {
+    height: 400px;
+  }
+</style>
