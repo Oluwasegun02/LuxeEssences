@@ -1,10 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container"> 
     <!--  container-fluid-->
-    <a class="navbar-brand" href="#">LuxeEssences</a>
+    <a class="navbar-brand" href="{% url 'home' %}">LuxeEssences</a>
+    
+   
+    <div class="search-bar">
+      <form action="{% url 'searchproduct' %}" method="POST">
+        {% csrf_token %}
+        <div class="input-group col-12 col-sm-8 col-md-6 col-lg-4">
+          <input type="search" required class="form-control" name="productsearch" id="seachproduct" placeholder="Search products">
+          <button type="submit" class="input-group-text"><i class="fa fa-search"></i></button>
+        </div>
+      </form>
+    </div>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+   
+    
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
@@ -25,8 +39,8 @@
             {{ request.user }}
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="{% url 'view_profile' %}">Profile</a></li>
+            <li><a class="dropdown-item" href="{% url 'myorders' %}">My Orders</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
           </ul>

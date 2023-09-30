@@ -1,0 +1,47 @@
+{% extends 'store/layouts/main.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container py-5">
+      <h2>Your Profile</h2>
+      <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="profile-avatar">
+              {% if profile.image %}
+                  <img src="{{ profile.image.url }}" alt="{{ request.user.username }} Avatar">
+              {% else %}
+                  <img src="{% static 'images/th.jpeg' %}" alt="Default Avatar">
+              {% endif %}
+              <input type="file" name="image">
+              {% if profile.image %}
+                  <button type="button" class="btn btn-danger" id="delete-image">Delete Image</button>
+              {% endif %}
+          </div>
+          {{ form.as_p }}
+        <div class="row">
+          <!-- create a column for the first button and adjust its width for different breakpoints -->
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+            <button type="submit" class="btn btn-secondary btn-block"><a style="color:white;" href="{% url 'update-profile-image' %}">Upload/Update Image</a></button>
+          </div>
+          <!-- create a column for the second button and adjust its width for different breakpoints -->
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 ">
+            <button type="submit" class="btn btn-primary btn-block">Update Profile</button>
+          </div>
+        </div>
+      </form>
+  </div>
+
+{% include "store/inc/footer.html" %}
+{% endblock content %}
+<script>
+    // JavaScript to handle image deletion
+    document.getElementById("delete-image").addEventListener("click", function () {
+        var deleteConfirm = confirm("Are you sure you want to delete your profile image?");
+        if (deleteConfirm) {
+            // Redirect to a view that handles image deletion, or use AJAX to delete the image.
+            // Example: window.location.href = "{% url 'delete-profile-image' %}";
+        }
+    });
+</script>
+
+{% include "store/inc/footer.html" %}

@@ -6,3 +6,8 @@
 .checkoutform input{
   font-size: 14px !important;
 }
+
+.search-bar{
+  width: 40% !important;
+  margin-left: 10%;
+}

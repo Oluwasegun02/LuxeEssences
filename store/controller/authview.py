@@ -11,7 +11,8 @@ def register(request):
         form = CustomUserform(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request,'Registered Successfully Login to Continue')
+            messages.success(request,
+                             'Registered Successfully Login to Continue')
             return redirect('/login')
     context = {'form': form}
     return render(request, "store/auth/register.html", context)

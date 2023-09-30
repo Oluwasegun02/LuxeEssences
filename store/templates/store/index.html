@@ -1,16 +1,164 @@
 {% extends 'store/layouts/main.html' %}
+{% load static %}
 
 {% block content %}
-
-{% comment %} slider {% endcomment %}
   {% include "store/inc/slider.html" %}
-  {% comment %} show all product {% endcomment %}
-  {% include "store/products/allpro.html" %}
-  {% comment %} about the Author {% endcomment %}
+<!-- trending products -->
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Trending Products</h2>
+          <hr>
+          <div class="row owl-carousel owl-theme">
+          {% for item in trending_products  %}
+            <div class="product_data item ">
+              <div class="card">
+                <a href="{% url "productview" item.category.slug item.slug %}">"
+                  <div class="card-body">
+                    <div class="category-image">
+                      <img src="{{ item.product_image.url }}" alt="product image" class="w-100" />
+                    </div>
+                    <h4 class="text-center">{{ item.name }}</h4>
+                </a>
+                <span class="float-start" >$<s>{{ item.original_price }}</s></span>
+                <span class="float-end" >${{ item.selling_price }}</span>
+                
+                <br>
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                      {% csrf_token %}
+                      <input type="hidden" value="{{ item.id }}" class="prod_id"/>
+                      <div class="input-group text-center mb-3">
+                        <button class="input-group-text decrement-btn">-</button>
+                        <input type="text" id="quantity-input" name="quantity" class="form-control qty-input text-center" value="1">
+                        <button class="input-group-text increment-btn">+</button>
+                       </div>
+                    </div>
+                    <div class="col-md-6 px-0">
+                      <span class=" mb-2" >
+                      {% if item.quantity > 0 %}
+                          <button type="button" class="btn btn-primary  btn-sm me-3 py-2 addToCartBtn">Add to Cart <i class="fa fa-shopping-cart"></i></button>
+                      {% else %}
+                        <button type="button" class="btn btn-danger btn-sm me-3 py-2 disabled">Out of Stock</button>
+                      {% endif %}
+                      </span>    
+                    </div>   
+                  </div>
+                
+                  
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- luxeEssences slider  -->
+  <div id="imageSlider" class="carousel slide mb-3" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="carousel-image">
+          <img src="{% static 'images/luxeessences.jpeg' %}" alt="Image 1">
+          <div class="carousel-caption">
+            <h3 class="">Perfumes</h3> 
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="carousel-image">
+          <img src="{% static 'images/esssluxe.jpeg' %}" alt="Image 2">
+          <div class="carousel-caption">
+            <h3>Fragrances</h3> 
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="carousel-image">
+          <img src="{% static 'images/luxe.jpeg' %}" alt="Image 3">
+          <div class="carousel-caption">
+            <h3>Scents</h3>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="carousel-image">
+          <img src="{% static 'images/luxees.jpeg' %}" alt="Image 4">
+          <div class="carousel-caption">
+            <h3>Aromas</h3>
+           </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#imageSlider" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#imageSlider" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+
+
+<!--  category -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Special Selection</h2>
+        <hr>
+        <div class="row">
+        {% for item in category %}
+          <div class="col-md-6">
+            <div class="card">
+              <a href="{% url "collectionsview" item.slug %}">"
+              <div class="card-body">
+                <div class="category-image">
+                  <img src="{{ item.image.url }}" alt="category image" class="w-100" />
+                </div>
+                <h4 class="text-center">{{ item.name }}</h4>
+              </div>
+            </a>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
   {% include "store/inc/about.html" %}
-  {% comment %} subscript to our new letter {% endcomment %}
-  {% include "store/inc/news.html" %}
-  {% comment %} footer {% endcomment %}
+
+  {% include "store/inc/newletter.html" %}
+
+
   {% include "store/inc/footer.html" %}
 
 {% endblock content %}
+
+{% block scripts %}
+  <script>
+      $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        dots:false,
+        nav:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:2
+            },
+            1000:{
+                items:4
+            }
+        }
+    })
+  </script>
+{% endblock scripts %}
+

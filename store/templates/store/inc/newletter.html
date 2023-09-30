@@ -1,0 +1,47 @@
+<section id="newsletter" class="py-5">
+    <div class="container">
+        <div class="d-flex flex-column align-items-center justify-content-center">
+            <div class="title text-center pt-3 pb-5">
+                <h2 class="position-relative d-inline-block ms-4">Newsletter Subscription</h2>
+            </div>
+
+            <p class="text-center text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus rem officia accusantium maiores quisquam dolorum?</p>
+            <form id="subscribe-form" action="YOUR_MAILCHIMP_SUBSCRIBE_URL" method="POST">
+                {% csrf_token %}
+                <div class="input-group mb-3 mt-3">
+                    <input type="email" class="form-control" name="EMAIL" placeholder="Enter Your Email ..." required>
+                    <button class="btn btn-primary" type="submit">Subscribe</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#subscribe-form").submit(function (e) {
+            e.preventDefault();
+            var email = $("input[name='EMAIL']").val();
+            $.ajax({
+                url: "YOUR_MAILCHIMP_SUBSCRIBE_URL",
+                type: "POST",
+                dataType: "json",
+                data: JSON.stringify({ "email_address": email, "status": "subscribed" }),
+                headers: {
+                    "Authorization": "Basic YOUR_MAILCHIMP_API_KEY"
+                },
+                success: function (response) {
+                    console.log("Subscription successful");
+                    // You can add a success message or redirect the user here
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error subscribing to newsletter");
+                    // Handle errors or display an error message
+                }
+            });
+        });
+    });
+</script>

@@ -1,0 +1,17 @@
+{% extends 'store/layouts/main.html' %}
+
+{% block content %}
+  <div class="container py-5 mb-2">
+              <a href="{% url 'view_profile' %}" class="btn btn-warning float-end text-white"> <i class="fa fa-reply"></i>back</a>
+    
+      <h2>Upload/Update Profile Image</h2>
+      <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-primary">Upload/Update Image</button>
+      </form>
+  </div>
+{% include "store/inc/footer.html" %}
+{% endblock content %}
+
+{% include "store/inc/footer.html" %}

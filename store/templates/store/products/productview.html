@@ -1,0 +1,36 @@
+
+{% block content %}
+<section id="collection" class="py-5 md-3">
+    <div class="container">
+        <div class="title text-center">
+            <h2 class="position-relative d-inline-block">Product Collection</h2>
+        </div>
+
+        <div class="row g-0 mb-3" >
+            <div class="collection-list mt-4 row gx-0 gy-3">
+                {% for product in products %}
+                    <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                        <div class="collection-img position-relative">
+                            <img src="{{ product.product_image.url }}" class="w-100">
+                            <span class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
+                        </div>
+                        <div class="text-center">
+                            <div class="rating mt-3">
+                                <span class="text-primary"><i class="fas fa-star"></i></span>
+                                <span class="text-primary"><i class="fas fa-star"></i></span>
+                                <span class="text-primary"><i class="fas fa-star"></i></span>
+                                <span class="text-primary"><i class="fas fa-star"></i></span>
+                                <span class="text-primary"><i class="fas fa-star"></i></span>
+                            </div>
+                            <p class="text-capitalize my-1">{{ product.name }}</p>
+                            <span class="fw-bold">$ {{ product.selling_price }}</span>
+                            <a href="{% url 'productview' product.category.slug product.slug %}" class="btn btn-primary mt-2">View Details</a>
+                            <a href="{% url 'add_to_cart' product.id %}" class="btn btn-success mt-2">Add to Cart</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

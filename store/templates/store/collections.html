@@ -2,21 +2,21 @@
 
 {% block content %}
 
-<div class="py-3 bg-primary">
+<div class="py-3 bg-dark md-3">
   <div class="container">
     <a class="text-white" href="{% url "home" %}">Home /</a>
     <a class="text-white" href="{% url "collections" %}">Collections</a>
   </div>
 </div>
 
-  <div class="container">
+  <div class="container py-5 mb-3">
     <div class="row">
       <div class="col-md-12">
         <h2>collections</h2>
         <hr>
         <div class="row">
         {% for item in category %}
-          <div class="col-md-3">
+          <div class="col-md-4">
             <div class="card">
               <a href="{% url "collectionsview" item.slug %}">"
               <div class="card-body">
@@ -34,4 +34,7 @@
     </div>
   </div>
 
+{% include "store/inc/footer.html" %}
 {% endblock content %}
+
+{% include "store/inc/footer.html" %}
