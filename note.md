@@ -6,6 +6,9 @@ create app in django `python manage.py startapp Store`
 `python manage.py makemigrations`
 `python manage.py migrate`
 
+### start the App
+`python manage.py runserver`
+
 pip install Pillow
 pip install -U pypaystack
 
@@ -20,9 +23,17 @@ ALERTIFYJS
 ## name for the web
 LuxeEssences.com
 
+## Version Control System
+
+git checkout -b app
+git status
+git add .
+git commit -m "app store"
+git push --set-upstream origin app
 
 
-## packages
+## packages on replit 
+[web on replit](https://fangrance-e-commerce.alxprojectbase.repl.co/)
 ~/fangrance-e-commerce$ pip list
 Package                           Version
 --------------------------------- ---------
