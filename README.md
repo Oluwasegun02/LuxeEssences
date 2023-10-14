@@ -13,9 +13,6 @@ python
 import secrets
 secrets.token_urlsafe(32)
 ```
-2. Hit run!
-
-See this 1 minute video for a walkthrough: [https://www.loom.com/share/ecc4e738149f4d1db3bcff01758b3e71](https://www.loom.com/share/341b5574d12040fb9fcbbff150777f1c)
 
 ## Installing packages
 
